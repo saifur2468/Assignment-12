@@ -16,7 +16,18 @@ import Register from "./Component/Authsection/Register";
 import AuthProvider  from "./Component/Authsection/Authprovider";
 import Privaterouter from "./Component/Routers/Privaterouter"
 import ContactSection from "./Component/ContactSection";
-
+import Dashborad from "./Component/Private Routes/Dashborad";
+import MakeAnnunmante from "./Component/MakeAnnunmante";
+import SeeAnnunmante from "./Component/SeeAnnunmante";
+import AgreementsRequest from "./Component/AgreementsRequest";
+import ManageCoupons from "./Component/ManageCoupons";
+import AdminProfile from "./Component/AdminProfile";
+import ManageMembers from "./Component/ManageMembers";
+import UserProfile from "./Component/UserProfile";
+import MakePayment from "./Component/MakePayment";
+import CheckoutForm from "./Component/CheckoutForm";
+import Payment from "./Component/Payment";
+import PaymentHistory from "./Component/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -40,10 +51,60 @@ const router = createBrowserRouter([
         path:"/ContactSection",
         element:<ContactSection></ContactSection>
       },
- 
+      {
+        path:"/Dashboard",
+        element:<Dashborad></Dashborad>
+      },
+      {
+        path:"/MakeAnnunmante",
+        element:<MakeAnnunmante></MakeAnnunmante>
+      },
 
+      {
+        path:"/SeeAnnunmante",
+        element:(
+          <Privaterouter>
+            <SeeAnnunmante></SeeAnnunmante>
+          </Privaterouter>
+        )
+      },
+      {
+        path:"/AgreementsRequest",
+        element:(
+          <Privaterouter>
+            <AgreementsRequest></AgreementsRequest>
+          </Privaterouter>
+        )
+      },
+      {
+path:"/ManageCoupons",
+element:<ManageCoupons></ManageCoupons>
+      },
+      {
+path:"/adminProfile",
+element:<AdminProfile></AdminProfile>
+      },
+ {
+  path:"/ManageMembers",
+  element:<ManageMembers></ManageMembers>
+ },
+ {
+path:"/userProfile",
+element:<UserProfile></UserProfile>
+ },
+{
+  path:"/MakePayment",
+  element:<MakePayment></MakePayment>
+},
      
-
+{
+  path:"/CheckoutForm",
+  element:<CheckoutForm></CheckoutForm>
+},
+{
+path:"/paymentHistory",
+element:<PaymentHistory></PaymentHistory>
+},
 
 
 

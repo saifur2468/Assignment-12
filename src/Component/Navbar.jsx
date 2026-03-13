@@ -7,12 +7,16 @@ import { HiMenuAlt3, HiX } from "react-icons/hi";
 const pages = [
     { name: 'Home', path: '/' },
     { name: 'Appartments', path: '/Appartments' },
-    { name: 'Contact', path: '/ContactSection' }
+    { name: 'Contact', path: '/ContactSection' },
+     {
+        name:' SeeAnnunmante', path:"/SeeAnnunmante"
+    },
 ];
 
 const settings = [
     { name: 'Profile', },
-    { name: 'Dashboard', path: '/dashboard' }
+    { name: 'Dashboard', path: '/Dashboard' },
+   
 ];
 
 const ResponsiveAppBar = () => {

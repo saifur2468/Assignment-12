@@ -1,60 +1,68 @@
-🏢 Apartment Booking Website
+# 🏢 Apartment Booking Website
 
-A modern Apartment Booking Web Application where users can explore apartments, request bookings, make payments, and manage their profile.
-Admins can manage members, approve booking requests, post announcements, and monitor system data.
+A modern **Apartment Booking Web Application** where users can explore available apartments, send booking requests, make payments, and manage their personal profile.
 
-This project is built using the MERN Stack with a responsive UI using Tailwind CSS.
+The platform also provides a powerful **Admin Dashboard** where administrators can manage members, approve booking agreements, post announcements, and monitor the entire system.
 
-🚀 Live Features
-👤 User Features
+This project is built using the **MERN Stack** with a responsive and modern UI powered by **Tailwind CSS**.
 
-🔎 Browse and view available apartments
+---
 
-📩 Send booking / agreement requests
+## 🌐 Live Website
+🔗 https://building-e4f32.web.app/
 
-👤 User Dashboard
+---
 
-💳 Make payments
+# 🚀 Features
 
-📜 View payment history
+## 👤 User Features
 
-📢 See announcements posted by admin
+- 🔎 Browse and explore available apartments  
+- 📩 Send apartment **booking / agreement requests**  
+- 👤 Access a **User Dashboard**  
+- 💳 Make secure payments  
+- 📜 View **payment history**  
+- 📢 View announcements posted by the admin  
+- 👤 Manage and update **user profile**
 
-👤 Manage personal profile
+---
 
-🛠️ Admin Features
+## 🛠️ Admin Features
 
-📊 View system overview from Admin Profile
+- 📊 View **system overview** from Admin Profile  
+- 📢 Post **announcements** for all users  
+- 📩 **Approve or reject** agreement requests  
+- 👥 **Manage members** of the platform  
+- 🎟️ **Add and manage coupons**  
+- 🏢 Manage apartment related information  
 
-📢 Post announcements for users
+---
 
-📩 Accept or delete agreement requests
+# 🧑‍💻 Tech Stack
 
-👥 Manage members
+## Frontend
+- ⚛️ React  
+- 🎨 Tailwind CSS  
+- 🔗 Axios  
+- 🔐 Firebase Authentication  
 
-🎟️ Add and manage coupons
+## Backend
+- 🟢 Node.js  
+- 🚀 Express.js  
 
-🏢 Manage apartment related information
+## Database
+- 🍃 MongoDB  
+# 📌 Project Purpose
 
-🧑‍💻 Tech Stack
-Frontend
+The goal of this project is to build a **modern apartment management and booking platform** where users can easily request apartment bookings and admins can efficiently manage the entire system.
 
-⚛️ React
+---
 
-🎨 Tailwind CSS
+# 👨‍💻 Author
 
-🔗 Axios
+**Saifur Rahman**
 
-🔐 Firebase Authentication
+- 💻 Full Stack Web Developer  
+- 🌐 MERN Stack Developer  
 
-Backend
 
-🟢 Node.js
-
-🚀 Express.js
-
-Database
-
-🍃 MongoDB
-
-## Live Link https://building-e4f32.web.app/

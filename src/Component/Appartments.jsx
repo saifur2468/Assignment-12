@@ -4,7 +4,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Appartments = () => {
     const [buildings, setBuildings] = useState([]);
-    const [userAgreements, setUserAgreements] = useState([]); // ইউজারের রিকোয়েস্টগুলো রাখার জন্য
+    const [userAgreements, setUserAgreements] = useState([]); 
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
 
@@ -26,12 +26,12 @@ const Appartments = () => {
         const fetchData = async () => {
             try {
                 // ১. বিল্ডিং ডেটা ফেচ
-                const buildingRes = await axios.get("http://localhost:5000/buildings");
+                const buildingRes = await axios.get("https://servercode-murex.vercel.app/buildings");
                 setBuildings(buildingRes.data);
 
                 // ২. যদি ইউজার লগইন থাকে, তবে তার এগ্রিমেন্ট স্ট্যাটাস ফেচ করা
                 if (user?.email) {
-                    const agreementRes = await axios.get(`http://localhost:5000/api/user-agreements/${user.email}`);
+                    const agreementRes = await axios.get(`https://servercode-murex.vercel.app/api/user-agreements/${user.email}`);
                     setUserAgreements(agreementRes.data);
                 }
 
@@ -59,7 +59,7 @@ const Appartments = () => {
         };
 
         try {
-            const res = await axios.post("http://localhost:5000/api/agreements/request", payload);
+            const res = await axios.post("https://servercode-murex.vercel.app/api/agreements/request", payload);
             if (res.status === 201 || res.status === 200) {
                 alert("Agreement request sent!");
                 // রিকোয়েস্ট পাঠানোর পর লিস্ট আপডেট করে দেওয়া যাতে বাটন চেঞ্জ হয়
@@ -102,7 +102,7 @@ const Appartments = () => {
                             <img src={apt.image} alt="apt" className="w-full h-48 object-cover rounded-2xl mb-4" />
                             <h3 className="text-xl font-bold">Apt No: {apt.apartmentNo}</h3>
                             <p className="text-gray-400 font-bold text-xl mt-2 flex-grow">Rent: ${apt.rent}</p>
-                            
+
                             <button
                                 disabled={btnStatus.disabled}
                                 className={`mt-6 border-2 rounded-xl w-full h-[54px] font-bold transition-all active:scale-95 ${btnStatus.class}`}

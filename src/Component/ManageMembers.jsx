@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { UserMinus, Mail, User } from 'lucide-react';
-import Swal from 'sweetalert2'; // সুন্দর এলার্টের জন্য (ঐচ্ছিক)
+import { UserMinus, Mail, User, Users, Loader2 } from 'lucide-react';
+import Swal from 'sweetalert2';
 
 const ManageMembers = () => {
     const [members, setMembers] = useState([]);
@@ -9,7 +9,7 @@ const ManageMembers = () => {
 
     const fetchMembers = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/members");
+            const res = await axios.get("https://servercode-murex.vercel.app/api/members");
             setMembers(res.data);
             setLoading(false);
         } catch (err) {
@@ -23,81 +23,103 @@ const ManageMembers = () => {
     }, []);
 
     const handleRemoveMember = async (email) => {
-        // কনফার্মেশন প্রম্পট
         Swal.fire({
             title: "Are you sure?",
             text: "This member will be downgraded to a regular user!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#ef4444",
-            cancelButtonColor: "#6366f1",
-            confirmButtonText: "Yes, remove him!"
+            cancelButtonColor: "#64748b",
+            confirmButtonText: "Yes, Remove",
+            borderRadius: '15px'
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await axios.patch(`http://localhost:5000/api/members/remove/${email}`);
+                    const res = await axios.patch(`https://servercode-murex.vercel.app/api/members/remove/${email}`);
                     if (res.data.modifiedCount > 0) {
-                        Swal.fire("Removed!", "Member has been changed to user.", "success");
-                        fetchMembers(); // লিস্ট আপডেট করা
+                        Swal.fire("Success!", "Role updated to regular user.", "success");
+                        fetchMembers();
                     }
                 } catch (err) {
-                    Swal.fire("Error", "Failed to remove member", "error");
+                    Swal.fire("Error", "Something went wrong!", "error");
                 }
             }
         });
     };
 
-    if (loading) return <div className="text-center py-20 font-bold text-indigo-600">Loading Members...</div>;
+    if (loading) {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-[60vh]">
+                <Loader2 className="w-10 h-10 animate-spin text-indigo-600 mb-4" />
+                <p className="text-slate-500 font-medium">Fetching members data...</p>
+            </div>
+        );
+    }
 
     return (
-        <div className="p-4 md:p-8 bg-white min-h-screen">
+        <div className="p-6 md:p-10 bg-[#f8fafc] min-h-screen font-sans">
             <div className="max-w-6xl mx-auto">
-                <div className="mb-8">
-                    <h2 className="text-3xl font-black text-slate-800">Manage Members</h2>
-                    <p className="text-slate-500">Currently active building members: {members.length}</p>
+                {/* Header Section */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
+                    <div>
+                        <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+                            Manage Members
+                        </h2>
+                        <p className="text-slate-500 mt-1 flex items-center gap-2">
+                            <Users size={18} className="text-indigo-500" />
+                            Total <span className="font-bold text-slate-800">{members.length}</span> active building members
+                        </p>
+                    </div>
+                    <div className="h-1 w-20 bg-indigo-600 rounded-full md:hidden"></div>
                 </div>
 
-                <div className="bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden">
+                {/* Table Card */}
+                <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
                     <div className="overflow-x-auto">
-                        <table className="table w-full">
-                            {/* Head */}
-                            <thead className="bg-slate-50 text-slate-600 uppercase text-xs tracking-widest font-bold">
-                                <tr>
-                                    <th className="py-5 px-6">User Details</th>
-                                    <th>Email Address</th>
-                                    <th className="text-center">Action</th>
+                        <table className="w-full text-left border-collapse">
+                            <thead>
+                                <tr className="bg-slate-50/50 border-b border-slate-200">
+                                    <th className="py-5 px-8 text-xs font-semibold text-slate-500 uppercase tracking-wider">Member Details</th>
+                                    <th className="py-5 px-8 text-xs font-semibold text-slate-500 uppercase tracking-wider">Contact</th>
+                                    <th className="py-5 px-8 text-xs font-semibold text-center text-slate-500 uppercase tracking-wider">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="divide-y divide-slate-100">
                                 {members.length === 0 ? (
                                     <tr>
-                                        <td colSpan="3" className="text-center py-20 text-slate-400 font-medium">
-                                            No members found in the database.
+                                        <td colSpan="3" className="py-20 text-center">
+                                            <div className="flex flex-col items-center opacity-40">
+                                                <Users size={48} className="mb-2" />
+                                                <p className="text-lg font-medium">No members found</p>
+                                            </div>
                                         </td>
                                     </tr>
                                 ) : (
                                     members.map((member) => (
-                                        <tr key={member._id} className="hover:bg-slate-50 transition-colors border-b border-slate-50">
-                                            <td className="py-4 px-6">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
-                                                        <User size={20} />
+                                        <tr key={member._id} className="hover:bg-indigo-50/30 transition-all group">
+                                            <td className="py-5 px-8">
+                                                <div className="flex items-center gap-4">
+                                                    <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-indigo-100 to-blue-50 flex items-center justify-center text-indigo-600 border border-indigo-200 shadow-sm">
+                                                        <User size={20} strokeWidth={2.5} />
                                                     </div>
-                                                    <span className="font-bold text-slate-700">{member.name}</span>
+                                                    <div>
+                                                        <p className="font-bold text-slate-800 text-base">{member.name}</p>
+                                                        <span className="text-[10px] bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full uppercase font-bold tracking-tighter">Verified Member</span>
+                                                    </div>
                                                 </div>
                                             </td>
-                                            <td className="text-slate-500 font-medium italic underline underline-offset-4 decoration-slate-200">
-                                                <div className="flex items-center gap-2">
-                                                    <Mail size={16} className="text-slate-400" />
-                                                    {member.email}
+                                            <td className="py-5 px-8">
+                                                <div className="flex items-center gap-2 text-slate-600 group-hover:text-indigo-600 transition-colors">
+                                                    <Mail size={16} className="opacity-70" />
+                                                    <span className="text-sm font-medium">{member.email}</span>
                                                 </div>
                                             </td>
-                                            <td className="text-center">
-                                                <button 
+                                            <td className="py-5 px-8 text-center">
+                                                <button
                                                     onClick={() => handleRemoveMember(member.email)}
-                                                    className="btn btn-error btn-sm text-black px-5 rounded-xl flex items-center gap-2 hover:scale-105 active:scale-95 transition-all shadow-md shadow-red-100"
+                                                    className="inline-flex items-center gap-2 bg-white hover:bg-red-50 text-red-600 border border-red-200 hover:border-red-300 px-4 py-2 rounded-xl text-sm font-bold transition-all hover:shadow-md active:scale-95 group/btn"
                                                 >
-                                                    <UserMinus size={16} />
+                                                    <UserMinus size={16} className="group-hover/btn:scale-110 transition-transform" />
                                                     Remove Member
                                                 </button>
                                             </td>
@@ -108,6 +130,11 @@ const ManageMembers = () => {
                         </table>
                     </div>
                 </div>
+
+                {/* Footer Info */}
+                <p className="mt-6 text-center text-slate-400 text-sm">
+                    Only authorized administrators can perform these actions.
+                </p>
             </div>
         </div>
     );

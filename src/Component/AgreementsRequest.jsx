@@ -8,7 +8,7 @@ const AgreementRequests = () => {
 
   const fetchRequests = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/agreements");
+      const res = await axios.get("https://servercode-murex.vercel.app/api/agreements");
       console.log("Fetched Data:", res.data); // ডেটা চেক করার জন্য
       setRequests(res.data);
     } catch (error) {
@@ -26,7 +26,7 @@ const AgreementRequests = () => {
     if (window.confirm("Are you sure you want to accept?")) {
       try {
         // আপনার ব্যাকএন্ডে POST রুট দেওয়া আছে, তাই এখানে post হবে
-        await axios.post(`http://localhost:5000/api/agreements/accept/${id}`);
+        await axios.post(`https://servercode-murex.vercel.app/api/agreements/accept/${id}`);
         fetchRequests();
       } catch (err) {
         alert("Failed to accept");
@@ -37,7 +37,7 @@ const AgreementRequests = () => {
   const handleReject = async (id) => {
     if (window.confirm("Are you sure you want to reject?")) {
       try {
-        await axios.post(`http://localhost:5000/api/agreements/reject/${id}`);
+        await axios.post(`https://servercode-murex.vercel.app/api/agreements/reject/${id}`);
         fetchRequests();
       } catch (err) {
         alert("Failed to reject");
@@ -85,7 +85,7 @@ const AgreementRequests = () => {
                     <td className="p-4">
                       {/* ব্যাকএন্ড অনুযায়ী floor, block, room */}
                       <div className="text-sm">
-                        <span className="font-semibold">Floor:</span> {req.floor} | 
+                        <span className="font-semibold">Floor:</span> {req.floor} |
                         <span className="font-semibold ml-1">Block:</span> {req.block}
                       </div>
                       <div className="text-sm text-indigo-600 font-medium">
@@ -95,13 +95,13 @@ const AgreementRequests = () => {
                     <td className="p-4 font-bold text-green-600">${req.rent}</td>
                     <td className="p-4">
                       <div className="flex justify-center gap-3">
-                        <button 
+                        <button
                           onClick={() => handleAccept(req._id)}
                           className="flex items-center gap-1 bg-green-500 text-white px-3 py-1.5 rounded-lg hover:bg-green-600 text-sm font-medium"
                         >
                           <Check size={16} /> Accept
                         </button>
-                        <button 
+                        <button
                           onClick={() => handleReject(req._id)}
                           className="flex items-center gap-1 bg-red-500 text-white px-3 py-1.5 rounded-lg hover:bg-red-600 text-sm font-medium"
                         >

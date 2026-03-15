@@ -8,7 +8,7 @@ const ManageCoupons = () => {
 
   const fetchCoupons = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/coupons");
+      const res = await axios.get("https://servercode-murex.vercel.app/api/coupons");
       setCoupons(res.data);
     } catch (err) {
       console.error(err);
@@ -33,7 +33,7 @@ const ManageCoupons = () => {
     };
 
     try {
-      const res = await axios.post("http://localhost:5000/api/coupons", newCoupon);
+      const res = await axios.post("https://servercode-murex.vercel.app/api/coupons", newCoupon);
       if (res.data.insertedId) {
         fetchCoupons();
         form.reset();
@@ -54,7 +54,7 @@ const ManageCoupons = () => {
             </h2>
             <p className="text-indigo-600 mt-1 font-medium">Create and monitor discount offers</p>
           </div>
-          <button 
+          <button
             className="btn bg-indigo-600 hover:bg-indigo-700 text-white border-none px-6 rounded-xl shadow-lg shadow-indigo-200 transition-all active:scale-95"
             onClick={() => document.getElementById("add_coupon_modal").showModal()}
           >
@@ -104,13 +104,13 @@ const ManageCoupons = () => {
         <div className="modal-box bg-white max-w-md rounded-3xl p-8">
           <form method="dialog"><button className="btn btn-sm btn-circle btn-ghost absolute right-5 top-5">✕</button></form>
           <h3 className="font-black text-2xl text-gray-800 mb-6">New Promotion</h3>
-          
+
           <form onSubmit={handleAddCoupon} className="space-y-5">
             <div className="form-control">
               <label className="label font-bold text-gray-600 text-sm">COUPON CODE</label>
               <input name="code" type="text" placeholder="e.g. WINTER50" className="input input-bordered w-full bg-gray-50 font-mono focus:ring-2 ring-indigo-500 border-none rounded-xl" required />
             </div>
-            
+
             <div className="form-control">
               <label className="label font-bold text-gray-600 text-sm">DISCOUNT PERCENTAGE (%)</label>
               <input name="discount" type="number" placeholder="20" className="input input-bordered w-full bg-gray-50 focus:ring-2 ring-indigo-500 border-none rounded-xl" required />

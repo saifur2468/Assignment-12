@@ -30,7 +30,7 @@ const Dashboard = () => {
   const adminMenuItems = [
     { name: 'Home Page', icon: <FaHome size={20}/>, path: '/' },
     { name: 'Admin Profile', icon: <FaPersonRifle size={20}/>, path: '/adminProfile' },
-    { name: 'Manage Members', icon: <Users size={20}/>, path: '/members' },
+    { name: 'Manage Members', icon: <Users size={20}/>, path: '/ManageMembers' },
     { name: 'Make Announcement', icon: <Megaphone size={20}/>, path: '/MakeAnnunmante' },
     { name: 'Agreement Requests', icon: <Handshake size={20}/>, path: '/AgreementsRequest' },
     { name: 'Manage Coupons', icon: <Ticket size={20}/>, path: '/ManageCoupons'},

@@ -5,7 +5,7 @@ const SeeAnnunmante = () => {
   const [notices, setNotices] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/notices")
+    axios.get("https://servercode-murex.vercel.app/api/notices")
       .then(res => setNotices(res.data))
       .catch(err => console.error(err));
   }, []);

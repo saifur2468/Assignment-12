@@ -3,9 +3,9 @@ import { auth } from '../Authsection/AuthContetx';
 import { 
   Users, Megaphone, Handshake, Ticket, Menu, X, UserCircle, CreditCard, History 
 } from 'lucide-react';
-import { FaHome, FaStar, FaLink, FaHandPointLeft } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import { FaPersonRifle } from 'react-icons/fa6';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
   const [admin, setAdmin] = useState({ name: "Loading...", photo: "" });
@@ -26,24 +26,21 @@ const Dashboard = () => {
     return () => unsubscribe();
   }, []);
 
-
   const adminMenuItems = [
     { name: 'Home Page', icon: <FaHome size={20}/>, path: '/' },
-    { name: 'Admin Profile', icon: <FaPersonRifle size={20}/>, path: '/adminProfile' },
-    { name: 'Manage Members', icon: <Users size={20}/>, path: '/ManageMembers' },
-    { name: 'Make Announcement', icon: <Megaphone size={20}/>, path: '/MakeAnnunmante' },
-    { name: 'Agreement Requests', icon: <Handshake size={20}/>, path: '/AgreementsRequest' },
-    { name: 'Manage Coupons', icon: <Ticket size={20}/>, path: '/ManageCoupons'},
+    { name: 'Admin Profile', icon: <FaPersonRifle size={20}/>, path: 'adminProfile' },
+    { name: 'Manage Members', icon: <Users size={20}/>, path: 'ManageMembers' },
+    { name: 'Make Announcement', icon: <Megaphone size={20}/>, path: 'MakeAnnunmante' },
+    { name: 'Agreement Requests', icon: <Handshake size={20}/>, path: 'AgreementsRequest' },
+    { name: 'Manage Coupons', icon: <Ticket size={20}/>, path: 'ManageCoupons'},
   ];
-
 
   const userMenuItems = [
     { name: 'Home Page', icon: <FaHome size={20}/>, path: '/' },
-    { name: 'My Profile', icon: <UserCircle size={20}/>, path: '/userProfile' },
-    { name: 'Make Payment', icon: <CreditCard size={20}/>, path: '/MakePayment' },
-    { name: 'Payment History', icon: <History size={20}/>, path: '/paymentHistory' },
+    { name: 'My Profile', icon: <UserCircle size={20}/>, path: 'userProfile' },
+    { name: 'Make Payment', icon: <CreditCard size={20}/>, path: 'MakePayment' },
+    { name: 'Payment History', icon: <History size={20}/>, path: 'paymentHistory' },
   ];
-
 
   const menuItems = isAdmin ? adminMenuItems : userMenuItems;
 
@@ -68,7 +65,12 @@ const Dashboard = () => {
 
         <nav className="flex-1 mt-6 overflow-y-auto">
           {menuItems.map((item) => (
-            <Link key={item.name} to={item.path} onClick={() => setIsSidebarOpen(false)} className="flex items-center px-6 py-4 hover:bg-indigo-600 transition-colors gap-4">
+            <Link 
+              key={item.name} 
+              to={item.path}   
+              onClick={() => setIsSidebarOpen(false)} 
+              className="flex items-center px-6 py-4 hover:bg-indigo-600 transition-colors gap-4"
+            >
               {item.icon}
               <span className="text-sm font-medium uppercase">{item.name}</span>
             </Link>
@@ -87,9 +89,14 @@ const Dashboard = () => {
 
         <div className="p-4 md:p-8">
           
-           <div className="bg-white p-6 rounded-2xl border border-dashed border-gray-300 text-center text-gray-400">
+          
+          <Outlet />
+
+          {/* optional default content */}
+          {/* <div className="bg-white p-6 rounded-2xl border border-dashed border-gray-300 text-center text-gray-400">
               Welcome to your {isAdmin ? "Admin" : "User"} Profile
-           </div>
+          </div> */}
+
         </div>
       </main>
     </div>

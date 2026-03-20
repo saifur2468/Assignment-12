@@ -7,15 +7,16 @@ import { HiMenuAlt3, HiX } from "react-icons/hi";
 const pages = [
     { name: 'Home', path: '/' },
     { name: 'Appartments', path: '/Appartments' },
-    { name: 'Contact', path: '/ContactSection' },
-     {
+    {
         name:' SeeAnnunmante', path:"/SeeAnnunmante"
     },
+     { name: 'Contact', path: '/ContactSection' },
+     { name: 'Dashboard', path: '/Dashboard' },
 ];
 
 const settings = [
-    { name: 'Profile', },
-    { name: 'Dashboard', path: '/Dashboard' },
+    // { name: 'Profile', },
+    
    
 ];
 

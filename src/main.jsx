@@ -40,6 +40,18 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+     path:"/Appartments",
+     element:<Appartments></Appartments>
+      },
+      {
+        path:"/SeeAnnunmante",
+        element:(
+          <Privaterouter>
+            <SeeAnnunmante></SeeAnnunmante>
+          </Privaterouter>
+        )
+      },
+      {
         path:"login",
         element:<Login></Login>
       },
@@ -52,24 +64,18 @@ const router = createBrowserRouter([
         element:<ContactSection></ContactSection>
       },
       {
-        path:"/Dashboard",
-        element:<Dashborad></Dashborad>
-      },
+        path:"Dashboard",
+        element:<Dashborad></Dashborad>,
+        children:[
+         
       {
-        path:"/MakeAnnunmante",
+        path:"MakeAnnunmante",
         element:<MakeAnnunmante></MakeAnnunmante>
       },
 
+      
       {
-        path:"/SeeAnnunmante",
-        element:(
-          <Privaterouter>
-            <SeeAnnunmante></SeeAnnunmante>
-          </Privaterouter>
-        )
-      },
-      {
-        path:"/AgreementsRequest",
+        path:"AgreementsRequest",
         element:(
           <Privaterouter>
             <AgreementsRequest></AgreementsRequest>
@@ -77,32 +83,32 @@ const router = createBrowserRouter([
         )
       },
       {
-path:"/ManageCoupons",
+path:"ManageCoupons",
 element:<ManageCoupons></ManageCoupons>
       },
       {
-path:"/adminProfile",
+path:"adminProfile",
 element:<AdminProfile></AdminProfile>
       },
  {
-  path:"/ManageMembers",
+  path:"ManageMembers",
   element:<ManageMembers></ManageMembers>
  },
  {
-path:"/userProfile",
+path:"userProfile",
 element:<UserProfile></UserProfile>
  },
 {
-  path:"/MakePayment",
+  path:"MakePayment",
   element:<MakePayment></MakePayment>
 },
      
 {
-  path:"/CheckoutForm",
+  path:"CheckoutForm",
   element:<CheckoutForm></CheckoutForm>
 },
 {
-path:"/paymentHistory",
+path:"paymentHistory",
 element:<PaymentHistory></PaymentHistory>
 },
 
@@ -117,6 +123,8 @@ element:<PaymentHistory></PaymentHistory>
         )
       }
 
+        ]
+      }
     ],
   },
 ]);

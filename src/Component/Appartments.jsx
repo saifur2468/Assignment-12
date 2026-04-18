@@ -92,7 +92,7 @@ const Appartments = () => {
     if (loading) return <div className="text-white text-center py-20 font-bold">Loading...</div>;
 
     return (
-        <div className="min-h-screen bg-[#020314] text-white p-10">
+        <div className="min-h-screen bg-white text-black p-10">
             {/* Search inputs code remains the same... */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                 {currentItems.map((apt) => {

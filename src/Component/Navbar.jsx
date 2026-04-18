@@ -41,7 +41,7 @@ const ResponsiveAppBar = () => {
     };
 
     return (
-        <nav className="bg-[#020314] border-b border-white/10 sticky top-0 z-50">
+        <nav className="bg-white border-b border-white/10 sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
                     
@@ -50,7 +50,7 @@ const ResponsiveAppBar = () => {
                         <div className="w-10 h-10 bg-[#6366f1] rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
                             <span className="text-white font-bold text-xl">B</span>
                         </div>
-                        <Link to="/" className="text-white font-bold text-2xl tracking-tighter uppercase">
+                        <Link to="/" className="text-blue-500 font-bold text-2xl tracking-tighter uppercase">
                             Building
                         </Link>
                     </div>
@@ -61,7 +61,7 @@ const ResponsiveAppBar = () => {
                             <Link 
                                 key={page.name} 
                                 to={page.path} 
-                                className="text-gray-300 hover:text-[#6366f1] font-medium transition-colors"
+                                className="text-blue-500 hover:text-[#6366f1] font-medium transition-colors"
                             >
                                 {page.name}
                             </Link>

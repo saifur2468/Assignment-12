@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
     return (
-        <section className="bg-[#020314] text-white py-20 px-6 overflow-hidden">
+        <section className=" text-white py-20 px-6 overflow-hidden">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 
                 {/* Left Side: Content */}
@@ -13,14 +13,14 @@ const About = () => {
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                 >
-                    <span className="text-[#6366f1] font-semibold tracking-widest uppercase text-sm">
+                    <span className="text-[#6366f1] font-semibold tracking-widest uppercase text-xl">
                         Discover Our Building
                     </span>
                     <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
                         About Our Building: <br /> 
-                        <span className="text-gray-400">Innovative Solutions for Modern Living</span>
+                        <span className="text-black">Innovative Solutions for Modern Living</span>
                     </h2>
-                    <p className="text-gray-400 text-lg mb-8">
+                    <p className="text-black text-lg mb-8">
                         Experience a digital-first lifestyle in our state-of-the-art building. We provide an environment where luxury meets functionality, designed specifically for the next generation of residents.
                     </p>
 
@@ -38,7 +38,7 @@ const About = () => {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                                     </svg>
                                 </div>
-                                <span className="text-gray-300 font-medium">{item}</span>
+                                <span className="text-black font-medium">{item}</span>
                             </li>
                         ))}
                     </ul>

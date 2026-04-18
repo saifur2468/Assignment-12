@@ -82,7 +82,7 @@ const Dashboard = () => {
       <main className="flex-1 w-full">
         <header className="flex justify-between items-center p-4 md:p-8 bg-white shadow-sm">
           <h1 className="text-xl font-bold text-gray-700">
-             {isAdmin ? "Admin Overview" : "Member Panel"}
+             {isAdmin ? "Admin Overview " : "Member Panel"}
           </h1>
           <button onClick={() => setIsSidebarOpen(true)} className="p-2 lg:hidden"><Menu size={28} /></button>
         </header>

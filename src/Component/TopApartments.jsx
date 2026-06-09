@@ -3,7 +3,7 @@ import axios from 'axios';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { motion } from 'framer-motion';
 import { BedDouble, Bath, Square, MapPin, Star, Loader2 } from 'lucide-react';
-
+  import { ToastContainer, toast } from 'react-toastify';
 const TopApartments = () => {
     const [buildings, setBuildings] = useState([]);
     const [userAgreements, setUserAgreements] = useState([]); 
@@ -41,9 +41,12 @@ const TopApartments = () => {
         fetchData();
     }, [user]);
 
-    // ৩. এগ্রিমেন্ট রিকোয়েস্ট হ্যান্ডলার
+  
     const handleAgreementRequest = async (apt) => {
-        if (!user) return alert("Please Login First!");
+       if (!user) {
+        toast.warning("Please Login First!");
+        return;
+    }
 
         const payload = {
             userName: user.displayName || "Anonymous",
@@ -67,7 +70,7 @@ const TopApartments = () => {
         }
     };
 
-    // ৪. বাটনের স্ট্যাটাস চেক
+  
     const getButtonStatus = (aptNo) => {
         const agreement = userAgreements.find(a => a.room === aptNo);
         if (!agreement) return { text: "Book Now", class: "bg-[#1C1F32] hover:bg-indigo-600 text-white", disabled: false };

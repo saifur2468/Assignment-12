@@ -9,7 +9,7 @@ const AgreementRequests = () => {
   const fetchRequests = async () => {
     try {
       const res = await axios.get("https://servercode-murex.vercel.app/api/agreements");
-      console.log("Fetched Data:", res.data); // ডেটা চেক করার জন্য
+      console.log("Fetched Data:", res.data); 
       setRequests(res.data);
     } catch (error) {
       console.error("Error fetching requests:", error);

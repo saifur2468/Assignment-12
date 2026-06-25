@@ -98,19 +98,56 @@ const Appartments = () => {
                 {currentItems.map((apt) => {
                     const btnStatus = getButtonStatus(apt.apartmentNo);
                     return (
-                        <div key={apt._id} className="bg-white/5 border border-white/10 p-6 rounded-3xl flex flex-col shadow-2xl">
-                            <img src={apt.image} alt="apt" className="w-full h-48 object-cover rounded-2xl mb-4" />
-                            <h3 className="text-xl font-bold">Apt No: {apt.apartmentNo}</h3>
-                            <p className="text-gray-400 font-bold text-xl mt-2 flex-grow">Rent: ${apt.rent}</p>
+                        <div className="bg-white rounded-xl shadow-md overflow-hidden">
+    <img
+        src={apt.image}
+        alt={apt.apartmentNo}
+        className="w-full h-56 object-cover"
+    />
 
-                            <button
-                                disabled={btnStatus.disabled}
-                                className={`mt-6 border-2 rounded-xl w-full h-[54px] font-bold transition-all active:scale-95 ${btnStatus.class}`}
-                                onClick={() => handleAgreementRequest(apt)}
-                            >
-                                {btnStatus.text}
-                            </button>
-                        </div>
+    <div className="p-5">
+        <h2 className="text-xl font-bold">
+            Apartment {apt.apartmentNo}
+        </h2>
+
+        <p className="text-gray-600 mt-1">
+            Block: {apt.blockName} | Floor: {apt.floorNo}
+        </p>
+
+        <p className="text-lg font-semibold text-green-600 mt-2">
+            Rent: ${apt.rent}/month
+        </p>
+
+        <div className="grid grid-cols-2 gap-2 mt-4 text-sm">
+            <p>🛏️ Bedrooms: {apt.bedrooms}</p>
+            <p>🚿 Bathrooms: {apt.bathrooms}</p>
+            <p>🛋️ Drawing: {apt.drawingRooms}</p>
+            <p>🍳 Kitchen: {apt.kitchens}</p>
+            <p>🌇 Balconies: {apt.balconies}</p>
+            <p>📐 Area: {apt.area} sq.ft</p>
+        </div>
+
+        <div className="mt-4">
+            <span
+                className={`px-3 py-1 rounded-full text-sm font-medium ${
+                    apt.status === "available"
+                        ? "bg-green-100 text-green-700"
+                        : "bg-red-100 text-red-700"
+                }`}
+            >
+                {apt.status}
+            </span>
+        </div>
+
+        <button
+            disabled={btnStatus.disabled}
+            className={`mt-6 border-2 rounded-xl w-full h-[54px] font-bold transition-all active:scale-95 ${btnStatus.class}`}
+            onClick={() => handleAgreementRequest(apt)}
+        >
+            {btnStatus.text}
+        </button>
+    </div>
+</div>
                     );
                 })}
             </div>

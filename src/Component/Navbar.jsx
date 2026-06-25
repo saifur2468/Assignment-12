@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './Authsection/AuthContetx'; 
 import { HiMenuAlt3, HiX } from "react-icons/hi"; 
-
+import logo from "../assets/pngtree-logo-template-real-estate-apartment-home-image_317806.jpg"
 const pages = [
     { name: 'Home', path: '/' },
     { name: 'Appartments', path: '/Appartments' },
@@ -48,7 +48,8 @@ const ResponsiveAppBar = () => {
                     {/* Logo Section */}
                     <div className="flex-shrink-0 flex items-center gap-2">
                         <div className="w-10 h-10 bg-[#6366f1] rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                            <span className="text-white font-bold text-xl">B</span>
+                            {/* <span className="text-white font-bold text-xl">B</span> */}
+                            <img src={logo} alt="logo" srcset="" />
                         </div>
                         <Link to="/" className="text-blue-500 font-bold text-2xl tracking-tighter uppercase">
                             Building

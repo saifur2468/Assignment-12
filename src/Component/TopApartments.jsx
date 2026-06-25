@@ -96,7 +96,7 @@ const TopApartments = () => {
                         <h2 className="text-sm font-black text-indigo-600 uppercase tracking-[0.3em] mb-3">Featured</h2>
                         <p className="text-4xl font-black text-gray-900">Top Rated Apartments</p>
                     </div>
-                    <a href="/apartments" className="text-indigo-600 font-bold hover:text-indigo-700 transition-colors border-b-2 border-indigo-600 pb-1">
+                    <a href="/Appartments" className="text-indigo-600 font-bold hover:text-indigo-700 transition-colors border-b-2 border-indigo-600 pb-1">
                         View All Units
                     </a>
                 </div>
